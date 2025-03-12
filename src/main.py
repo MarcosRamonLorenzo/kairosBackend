@@ -1,4 +1,5 @@
 from fastapi import FastAPI
+from routes import router 
 
 app = FastAPI()
 
@@ -7,6 +8,5 @@ def root():
     return {"Hello": "World"}
 
 
-@app.post("/")
-def a():
-    return {"Hello": "World"}
+app.include_router(router, prefix="/api")
+
