@@ -1,5 +1,6 @@
 from fastapi import APIRouter, HTTPException
 from uuid import UUID
+from exceptions import NotFoundException
 
 
 router = APIRouter()
@@ -19,7 +20,7 @@ def getUser(user_id : str):
     print(f"Se ha solicitado el user_id: {user_id}") 
 
     if user_id not in fake_DB :
-        raise HTTPException(status_code=404, detail="User not found ")
+        raise NotFoundException(detail= user_id)
     return fake_DB[user_id]
 
 
